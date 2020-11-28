@@ -1,4 +1,4 @@
-#
+# iamklaus - ENJOY IT
 # Use a temporary image to compile and test the libraries
 #
 FROM nextcloud:apache as builder
