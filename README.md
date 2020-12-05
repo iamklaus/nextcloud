@@ -12,4 +12,4 @@ Please access your nextcloud installation in your favorite browser to install an
 I recommend activate the cron scheduler, which is part of the image. Go to Settings -> Basic Settings and select the option "Cron" for the Background jobs. That's make the web interface more responsive, especially with a lot of files or if you have many users. Background jobs are executed every 5 minutes.
 
 # Environment variables
-Please configure a environment variable MEMORY_LIMIT (https://www.php.net/manual/en/ini.core.php#ini.memory-limit). The more memory you can add, the better it is for the face recognition.
+Please configure the environment variable MEMORY_LIMIT (https://www.php.net/manual/en/ini.core.php#ini.memory-limit). The default values is 128 MByte which not optimal for the face recognition. The more memory you can add, the better it is.
