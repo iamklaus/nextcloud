@@ -149,6 +149,7 @@ RUN mkdir -p \
 COPY supervisord.conf /
 
 ENV NEXTCLOUD_UPDATE=1
+ENV MEMORY_LIMIT=128M
 
 RUN echo '*/30 * * * * php -f /var/www/html/occ face:background_job -t 900' >> /var/spool/cron/crontabs/www-data
 CMD ["/usr/bin/supervisord", "-c", "/supervisord.conf"]
