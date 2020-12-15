@@ -21,5 +21,4 @@ jobs:
        run: docker build . --file Dockerfile --tag devilsdesigns/NextCloud-w-Facial-Recon:$(date +%s)
        
        -name: Docker Push
-       run: docker push ${{secrets.DOCKER_USER}}/YOUR_DOCKER_HUB_REPO_NAME
-   
+        run: docker push ${{secrets.DOCKER_USER}}/NextCloud-w-Facial-Recon
