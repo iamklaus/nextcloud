@@ -1,18 +1,25 @@
-name: Publish Docker image
+name: Docker image
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: devilsdesigns/NextCloud-with-Facial-Recon
-          tag_with_ref: true
+
+ build:
+   runs-on: ubuntu-latest
+ 
+   steps:
+     - uses: actions/checkout@v2
+     - name: docker login
+       env:
+         DOCKER_USER: ${{secrets.DOCKER_USER}}
+         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+       run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+     - name: Build the Docker image
+       run: docker build . --file Dockerfile --tag devilsdesigns/NextCloud-w-Facial-Recon:$(date +%s)
+       
+       -name: Docker Push
+       run: docker push ${{secrets.DOCKER_USER}}/YOUR_DOCKER_HUB_REPO_NAME
+   
