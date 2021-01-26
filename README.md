@@ -12,4 +12,12 @@ Please access your nextcloud installation in your favorite browser to install an
 I recommend activate the cron scheduler, which is part of the image. Go to Settings -> Basic Settings and select the option "Cron" for the Background jobs. That's make the web interface more responsive, especially with a lot of files or if you have many users. Background jobs are executed every 5 minutes.
 
 # Environment variables
+
+MEMORY_LIMIT
 Please configure the environment variable MEMORY_LIMIT (https://www.php.net/manual/en/ini.core.php#ini.memory-limit). The default value is 1 GByte. If you can add more, please do so.
+
+NEXTCLOUD_UPDATE
+Set NEXTCLOUD_UPDATE to "1" if you want to receive updates.
+
+# More
+Follow my blog to receive the latest information.
