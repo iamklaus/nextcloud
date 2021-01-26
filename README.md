@@ -20,4 +20,4 @@ NEXTCLOUD_UPDATE
 Set NEXTCLOUD_UPDATE to "1" if you want to receive updates.
 
 # More
-Follow my blog to receive the latest information.
+Follow my blog to receive the latest information: https://iamklaus.org/category/nextcloud/
