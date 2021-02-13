@@ -14,8 +14,7 @@ Please access your nextcloud installation in your favorite browser to install an
 2. Activate the Cron
 Activate the cron scheduler, which is part of the image. Go to Settings -> Basic Settings and select the option "Cron" for the Background jobs. That's make the web interface more responsive, especially with a lot of files or if you have many users. Background jobs are executed every 5 minutes.
 
-![Cron Scheduler](https://github.com/iamklaus/nextcloud/raw/main/images/cron.gif | width="100%") 
-<!-- .element width="100%" -->
+<img src="https://github.com/iamklaus/nextcloud/raw/main/images/cron.gif" width="100%">
 
 # Environment variables
 
