@@ -44,7 +44,7 @@ RUN cd; \
     && make
 
 # If pass the tests, we are able to create the final image.
-FROM nextcloud:apache
+FROM nextcloud:fpm
 
 # Install dependencies to image
 RUN apt-get update ; \
@@ -136,8 +136,6 @@ RUN mkdir -p \
 COPY supervisord.conf /
 
 ENV NEXTCLOUD_UPDATE=1
-ENV MEMORY_LIMIT=1G
 
 RUN echo '*/30 * * * * php -f /var/www/html/occ face:background_job -t 900' >> /var/spool/cron/crontabs/www-data
-RUN sed -i -e '/^<VirtualHost/,/<\/VirtualHost>/ { /<\/VirtualHost>/ i\Header always set Strict-Transport-Security "max-age=15552000; includeSubDomain"' -e '}' /etc/apache2/sites-enabled/000-default.conf
 CMD ["/usr/bin/supervisord", "-c", "/supervisord.conf"]
