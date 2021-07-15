@@ -6,7 +6,7 @@ FROM nextcloud:fpm as builder
 RUN apt-get update ; \
     apt-get install -y build-essential wget cmake libx11-dev libopenblas-dev shtool
 
-ARG DLIB_BRANCH=v19.21
+ARG DLIB_BRANCH=v19.22
 RUN cd; \
     wget -c -q https://github.com/davisking/dlib/archive/$DLIB_BRANCH.tar.gz \
     && tar xf $DLIB_BRANCH.tar.gz \
