@@ -1,4 +1,4 @@
-# iamklaus - ENJOY IT
+# iamklaus/nextcloud:fpm - ENJOY IT
 # Use a temporary image to compile and test the libraries
 FROM nextcloud:fpm as builder
 
