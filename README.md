@@ -1,3 +1,7 @@
+# Updates
+
+[2022 01 02] Updated to Nextcloud 23.0.0
+
 # Nextcloud on Docker with Face Recognition and Cron
 
 This Dockerfile extends the official nextcloud:apache and nextcloud:fpm dockerfile (https://hub.docker.com/_/nextcloud) with Face Recognition Capabilities in your Nextcloud images. Additionally this Dockerfile adds cron via supervisory.

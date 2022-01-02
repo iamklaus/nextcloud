@@ -54,8 +54,10 @@ RUN apt-get update ; \
 COPY --from=builder /usr/local/lib/libdlib.so* /usr/local/lib/
 
 # If is necesary take the php extention folder uncommenting the next line
-# RUN php -i | grep extension_dir
+#RUN php -i | grep extension_dir
+#COPY --from=builder  $(php -r "echo ini_get ('extension_dir');")/pdlib.so $(php -r "echo ini_get ('extension_dir');")/
 COPY --from=builder  /usr/local/lib/php/extensions/no-debug-non-zts-20200930/pdlib.so /usr/local/lib/php/extensions/no-debug-non-zts-20200930/
+
 
 # Enable PDlib on final image
 RUN echo "extension=pdlib.so" > /usr/local/etc/php/conf.d/pdlib.ini
@@ -71,9 +73,7 @@ RUN wget -c -q -O facerecognition https://github.com/matiasdelellis/facerecognit
   && unzip facerecognition \
   && mv facerecognition-*  /usr/src/nextcloud/facerecognition \
   && cd /usr/src/nextcloud/facerecognition \
-  && make; \
-
-RUN set -ex; \
+  && make 
 
 RUN set -ex; \
     apt-get update; \
@@ -89,13 +89,10 @@ RUN set -ex; \
         fuse \
         fontconfig \
         exiftool \
-        gnupg \
-    ; \
+        gnupg 
 
 RUN set -ex; \
-    \
     savedAptMark="$(apt-mark showmanual)"; \
-    \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         libbz2-dev \
@@ -112,7 +109,6 @@ RUN set -ex; \
     pecl install smbclient; \
     docker-php-ext-enable smbclient; \
     \
-# reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
     apt-mark manual $savedAptMark; \
     ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
@@ -122,16 +118,13 @@ RUN set -ex; \
         | cut -d: -f1 \
         | sort -u \
         | xargs -rt apt-mark manual; \
-    
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*; \
-    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-;
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
 
 RUN mkdir -p \
     /var/log/supervisord \
-    /var/run/supervisord \
-;
+    /var/run/supervisord 
 
 COPY supervisord.conf /
 
