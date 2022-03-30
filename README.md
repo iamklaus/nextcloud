@@ -1,6 +1,9 @@
 # Updates
 
 [2022 03 30] Updated to Nextcloud 23.0.3
+
+[2022 02 22] Updated to Nextcloud 23.0.2
+
 [2022 01 02] Updated to Nextcloud 23.0.0
 
 # Nextcloud on Docker with Face Recognition and Cron
